@@ -21,7 +21,7 @@ OTP is valid for **10 minutes** and can be used **once**.
 
 Start **this app first**, then the marketplace.
 
-If `spring.mail.username` is empty, the OTP is printed in the console (`Mail not configured. OTP for ... = 123456`). To send real email, set Gmail + an [App Password](https://support.google.com/accounts/answer/185833) in `application.properties`.
+If `resend.api-key` is empty, the OTP is printed in the console (`Resend not configured. OTP for ... = 123456`). To send real email, paste a [Resend API key](https://resend.com) into `application.properties`. Until you verify a domain, Resend only delivers to the email you signed up with (`from` can stay `onboarding@resend.dev`).
 
 ## Test this service alone (optional)
 
