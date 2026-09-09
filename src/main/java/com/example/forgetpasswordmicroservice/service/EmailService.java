@@ -30,8 +30,15 @@ public class EmailService {
     }
 
     public void sendOtp(String to, String otp) {
+        sendEmail(to, "Password reset OTP", "Your OTP is " + otp + ". It expires in 10 minutes.");
+    }
+
+    public void sendEmail(String to, String subject, String text) {
+        if (to == null || to.isBlank()) {
+            return;
+        }
         if (apiKey == null || apiKey.isBlank()) {
-            System.out.println("Resend not configured. OTP for " + to + " = " + otp);
+            System.out.println("Resend not configured. Email to " + to + ": " + text);
             return;
         }
 
@@ -42,13 +49,13 @@ public class EmailService {
         Map<String, Object> body = new HashMap<>();
         body.put("from", from);
         body.put("to", List.of(to));
-        body.put("subject", "Password reset OTP");
-        body.put("text", "Your OTP is " + otp + ". It expires in 10 minutes.");
+        body.put("subject", subject);
+        body.put("text", text);
 
         try {
             restTemplate.postForEntity(resendUrl, new HttpEntity<>(body, headers), String.class);
         } catch (Exception e) {
-            System.out.println("Could not send email to " + to + " (" + e.getMessage() + "). OTP = " + otp);
+            System.out.println("Could not send email to " + to + " (" + e.getMessage() + "). " + text);
         }
     }
 }
