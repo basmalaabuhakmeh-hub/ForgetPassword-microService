@@ -4,7 +4,7 @@ Small Spring Boot service that **creates, emails (or logs), and verifies** a 6-d
 
 It does **not** store users or passwords. The marketplace owns that:
 
-**[training (marketplace)](https://github.com/basmalaabuhakmeh-hub/training)**
+**[marketplace-backend](https://github.com/basmalaabuhakmeh-hub/marketplace-backend)**
 
 The marketplace calls this app with HTTP (`RestTemplate`):
 
